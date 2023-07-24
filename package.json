@@ -1,0 +1,11 @@
+{
+	"name": "getenclosureinfo",
+	"description": "Get information about a data file necessary for including in an RSS enclosure element.",
+	"version": "0.4.0",
+	"main": "getenclosureinfo.js",
+	"dependencies" : {
+		"daveutils": "*",
+		"davehttp": "*",
+		"request": "*"
+		}
+	}
