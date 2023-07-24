@@ -55,9 +55,18 @@ davehttp.start (config, function (theRequest) {
 			returnData (jstruct);
 			}
 		}
+	function returnJSONP (err, jstruct) {
+		if (err) {
+			returnError (err);
+			}
+		else {
+			const jsonptext = "getData (" + JSON.stringify (jstruct) + ")";
+			theRequest.httpReturn (200, "application/javascript", jsonptext);
+			}
+		}
 	switch (theRequest.lowerpath) {
 		case "/getenclosureinfo":
-			getEnclosureInfo (params.url, httpReturn);
+			getEnclosureInfo (params.url, returnJSONP);
 			return (true);
 		default: 
 			returnNotFound ();
