@@ -35,6 +35,9 @@ function getEnclosureInfo (url, callback) { //7/24/23 by DW
 
 davehttp.start (config, function (theRequest) {
 	const params = theRequest.params;
+	function returnPlainText (s) {
+		theRequest.httpReturn (200, "text/plain", s.toString ());
+		}
 	function returnNotFound () {
 		theRequest.httpReturn (404, "text/plain", "Not found.");
 		}
@@ -67,6 +70,9 @@ davehttp.start (config, function (theRequest) {
 	switch (theRequest.lowerpath) {
 		case "/getenclosureinfo":
 			getEnclosureInfo (params.url, returnJSONP);
+			return (true);
+		case "/now":
+			returnPlainText (new Date ());
 			return (true);
 		default: 
 			returnNotFound ();
